@@ -14,7 +14,7 @@ class BookController extends Controller
     public function index()
     {
         $bookList = Book::paginate(4);
-        dump($bookList);
+        
         return view('books.home', compact('bookList'));
     }
 
@@ -47,7 +47,8 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $book = Book::find($id);
+        return view('books.show', compact('book'));
     }
 
     /**

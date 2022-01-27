@@ -4,6 +4,8 @@
 
     <h1>Books</h1>
 
+   <div class="container">
+
     <table class="table">
         <thead>
           <tr>
@@ -24,15 +26,21 @@
                 <th scope="row">{{$book->id}}</th>
                 <td>{{$book->name}}</td>
                 <td>{{$book->description}}</td>
-                <td>{{$book->name}}</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <td>{{$book->image}}</td>
+                <td>{{$book->price}}</td>
+                <td>{{$book->series}}</td>
+                <td>{{$book->date}}</td>
+                <td>{{$book->type}}</td>
+                <td><a class="btn btn-primary" href="{{ route('books.show', $book) }}">Show</a></td>
               </tr>
+
             @endforeach
           
         </tbody>
       </table>
+
+        {{ $bookList->links() }}
+
+   </div>
     
 @endsection
