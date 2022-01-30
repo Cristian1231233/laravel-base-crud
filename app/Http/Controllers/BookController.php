@@ -94,9 +94,12 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($data['slug'], '-');
+        $book->update($data);
+        return redirect()->route('books.show', $book);
     }
 
     /**
@@ -105,8 +108,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return redirect()->route('books.index');
     }
 }

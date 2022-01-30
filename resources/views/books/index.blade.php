@@ -34,7 +34,14 @@
                 <td>{{$book->type}}</td>
                 <td><a class="btn btn-success" href="{{ route('books.show', $book) }}">Show</a></td>
                 <td><a class="btn btn-primary" href="{{ route('books.edit', $book) }}">Edit</a></td>
-                <td><a class="btn btn-danger" href="{{ route('books.show', $book) }}">Delete</a></td>
+                <td>
+                <form action="{{ route('books.destroy', $book) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                </td>
+
               </tr>
 
             @endforeach
