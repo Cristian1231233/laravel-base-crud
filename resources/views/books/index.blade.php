@@ -17,6 +17,7 @@
             <th scope="col">series</th>
             <th scope="col">sale_date</th>
             <th scope="col">type</th>
+            <th colspan="3" scope="col">action</th>
           </tr>
         </thead>
         <tbody>
@@ -31,7 +32,9 @@
                 <td>{{$book->series}}</td>
                 <td>{{$book->date}}</td>
                 <td>{{$book->type}}</td>
-                <td><a class="btn btn-primary" href="{{ route('books.show', $book) }}">Show</a></td>
+                <td><a class="btn btn-success" href="{{ route('books.show', $book) }}">Show</a></td>
+                <td><a class="btn btn-primary" href="{{ route('books.edit', $book) }}">Edit</a></td>
+                <td><a class="btn btn-danger" href="{{ route('books.show', $book) }}">Delete</a></td>
               </tr>
 
             @endforeach

@@ -10,6 +10,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('books.index') }}">Books</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('books.create') }}">Inserisci un nuovo libro</a>
+          </li>
       </ul>
 
    
