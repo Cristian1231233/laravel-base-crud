@@ -11,8 +11,8 @@
         @csrf
         @method('PUT')
             <div class="mb-3">
-             <label for="name" class="form-label">Nome</label>
-             <input type="text" value="{{ $book->name }}" class="form-control" name="name" id="name" placeholder="Nome libro">
+             <label for="title" class="form-label">Nome</label>
+             <input type="text" value="{{ $book->name }}" class="form-control" name="title" id="title" placeholder="Nome libro">
          </div>
          <div class="mb-3">
             <label for="series" class="form-label">Serie</label>

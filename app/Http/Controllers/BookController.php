@@ -14,7 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $bookList = Book::paginate(4);
+        $bookList = Book::orderBy('id', 'desc')->paginate(4);
         
         return view('books.index', compact('bookList'));
     }
@@ -39,6 +39,28 @@ class BookController extends Controller
     public function store(Request $request)
     {
         // die('sono arrivato qua');
+
+        $request->validate(
+            [
+                'name'=>'required|max:50|min:2',
+                'description'=>'required|max:100|min:2',
+                'image'=>'required|max:100|min:2',
+                // 'price'=>'required|max:6|min:2',
+                'series'=>'required|max:50|min:5',
+                'date'=>'required|max:10|min:4',
+                'type'=>'required|max:50|min:5',
+            ],
+            [
+                'name.required'=>'Il campo titolo è obbligatorio',
+                'description.required'=>'Il campo descrizione è obbligatorio',
+                'image.required'=>'Il campo immagine è obbligatorio',
+                // 'price.required'=>'Il campo prezzo è obbligatorio',
+                'series.required'=>'Il campo serie è obbligatorio',
+                'date.required'=>'Il campo data è obbligatorio',
+                'type.required'=>'Il campo tipo è obbligatorio',
+            ]
+        );
+
         $data = $request->all();
         $new_book = new Book();
 
@@ -111,6 +133,6 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with('deleted', 'Il libro è stato eliminato');
     }
 }

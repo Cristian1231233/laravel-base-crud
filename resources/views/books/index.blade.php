@@ -6,6 +6,12 @@
 
    <div class="container">
 
+    @if (session('deleted'))
+      <div class="alert alert-danger" role="alert">
+        {{ session('deleted') }}
+      </div>
+    @endif
+
     <table class="table">
         <thead>
           <tr>
@@ -35,7 +41,7 @@
                 <td><a class="btn btn-success" href="{{ route('books.show', $book) }}">Show</a></td>
                 <td><a class="btn btn-primary" href="{{ route('books.edit', $book) }}">Edit</a></td>
                 <td>
-                <form action="{{ route('books.destroy', $book) }}" method="POST">
+                <form action="{{ route('books.destroy', $book) }}" onsubmit="return confirm('Sei sicuro di eliminare {{ $book->name }}?')" method="POST">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger">Delete</button>
